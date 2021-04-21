@@ -1,12 +1,11 @@
 
 from random import choice
 
+
+
 class Hangman():
-    def __init__(self):
-        with open("./utils/words.txt", "r") as words:
-            possible_words = words.read().split()
-            words.close()
-        self.possible_words = possible_words
+    def __init__(self, words):
+        self.possible_words = words
         self.word = choice(self.possible_words).upper()
         self.lives = 5
         self.errors = 0
@@ -76,8 +75,7 @@ class Hangman():
         self.alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         self.start_game()
 
-a = Hangman()
-a.start_game()
+
 
 
 
