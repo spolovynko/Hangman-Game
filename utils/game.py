@@ -7,7 +7,7 @@ class Hangman():
     def __init__(self, words):
         self.possible_words = words
         self.word = choice(self.possible_words).upper()
-        self.lives = 5
+        self.lives = 7
         self.errors = 0
         self.correctly_guessed_letters = "_" * len(self.word)
         self.alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -30,7 +30,6 @@ class Hangman():
             print(f"You have {self.lives} guesses left")
             print("Please enter one letter from below")
             print(self.alphabet)
-            print(self.word)
             print(f"The Word: {self.correctly_guessed_letters}")
             guess = input("").upper()
             if len(guess) ==  1 and guess.isalpha():
@@ -54,7 +53,7 @@ class Hangman():
         print(f"You lost, the word was {self.word}.")
         play_again = input("Care to play again? [Y/N]\n").lower()
         if play_again == "y":
-            self.reset()
+            self._reset()
         else:
             print("Thanks for playing")
 
@@ -63,11 +62,11 @@ class Hangman():
         print(f"You have done {self.errors} mistakes")
         play_again = input("Care to play again? [Y/N]\n").lower()
         if play_again == "y":
-            self.reset()
+            self._reset()
         else:
             print("Thanks for playing")
 
-    def reset(self):
+    def _reset(self):
         self.word = choice(self.possible_words).upper()
         self.lives = 5
         self.errors = 0
